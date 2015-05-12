@@ -8,58 +8,68 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    particle.update(); // 等速運動の更新
+    for (int i =0; i< NUM; i++) {
+        particle[i].addForce(ofVec2f(0,1.0));
+        particle[i].update();
+        particle[i].bounceOffWalls();
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    particle.draw(); // 描画
+    for (int i = 0; i < NUM; i++){
+        particle[i].draw();
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+    
 }
 
 //--------------------------------------------------------------
-// クリックした場所から、等速度運動を開始
 void ofApp::mouseReleased(int x, int y, int button){
-    particle.position = ofVec2f(x, y); // 初期位置
-    particle.velocity = ofVec2f(0, 0); // 速度をリセット
-    particle.acceleration = ofVec2f(ofRandom(-10, 10), ofRandom(-10, 10)); // 加速度を設定
+    for (int i = 0; i < NUM; i++) {
+        particle[i].position.set(x, y);
+        particle[i].velocity.set(0, 0);
+        float length = ofRandom(20.0);
+        float angle = ofRandom(2.0 * PI);
+        ofVec2f force = ofVec2f(length * cos(angle), length * sin(angle));
+        particle[i].addForce(force);
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg){
-
+    
 }
 
 //--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
+void ofApp::dragEvent(ofDragInfo dragInfo){
+    
 }

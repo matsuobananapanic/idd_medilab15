@@ -20,5 +20,6 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    ParticleVec2 particle; // インスタンス化
+    static const int NUM = 10000;
+    ParticleVec2 particle[NUM];
 };

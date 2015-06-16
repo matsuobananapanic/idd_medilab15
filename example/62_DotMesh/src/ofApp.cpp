@@ -13,7 +13,7 @@ void ofApp::setup(){
     h = 200;
     
     // メッシュの描画方法指定
-    mesh.setMode(OF_PRIMITIVE_POINTS);
+    mesh.setMode(OF_PRIMITIVE_LINE_STRIP);
     
     // 頂点の色を初期化
     for (int i = 0; i < w; i++) {

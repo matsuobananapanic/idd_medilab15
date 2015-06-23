@@ -3,6 +3,9 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetFrameRate(60);
+    for (int i =0; i < 20; i++){
+        freq[i] = ofRandom(4.0, 10.0);
+    }
 }
 
 //--------------------------------------------------------------
@@ -17,6 +20,7 @@ void ofApp::draw(){
     shader.begin();
     shader.setUniform1f("u_time", ofGetElapsedTimef());
     shader.setUniform2f("u_resolution", ofGetWidth(), ofGetHeight());
+    shader.setUniform1fv("u_freq", freq, 20);
     ofRect(0,0,ofGetWidth(), ofGetHeight());
     shader.end();
 }
